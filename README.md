@@ -1,15 +1,33 @@
-# buildspace Store on Solana Pay Project
+# Tech Titans Book Store
 
-### **Welcome 👋**
+Tech Titans Book Store is an e-commerce web application built using IPFS to store the files and Solana Pay for the payments. The payments are made in USDC, a stable coin. The application provides a user-friendly interface for purchasing and downloading books.
 
-To get started with this project, clone this repo and follow these commands:
+## Technologies Used
 
-1. Run `npm install` at the root of your directory
-2. Run `npm run dev` to start the project
-3. Start coding!
+- IPFS
+- Solana Pay
+- NextJS
+- Web3
 
-### What is the `.vscode` Folder?
-If you use VSCode to build your app, we included a list of suggested extensions that will help you build this project! Once you open this project in VSCode, you will see a popup asking if you want to download the recommended extensions :).
+## Setup
 
-### **Questions?**
-Have some questions make sure you head over to your [buildspace Dashboard](https://app.buildspace.so/) and link your Discord account so you can get access to helpful channels teaching assistants, and your instructor!
+To set up this project, follow these steps:
+
+- Clone the repository: git clone https://github.com/desakash/Hackoverflow.git
+- Install dependencies: `yarn`
+- Start the server: `yarn dev`
+- Open http://localhost:3000 in your browser to view the app.
+
+Note: You will need to phantom wallet and some USDC and SOL in your devnet account.
+
+## Demo Video
+
+- To see a demo of this application, watch this demo video.
+
+## Hosted App Link
+
+You can access the hosted app at https://techtitans.tiluckdave.in
+
+## Conclusion
+
+Tech Titans Book Store is a modern e-commerce web3 application that provides a seamless experience for purchasing and downloading books. There is no authentication, no email, no address! Fully secure With IPFS and Solana Pay, the app provides fast and secure storage and payment options.
