@@ -10,6 +10,8 @@ import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 
 const App = () => {
   const { publicKey } = useWallet();
+  const isOwner = ( publicKey ? publicKey.toString() === process.env.NEXT_PUBLIC_OWNER_PUBLIC_KEY : false );
+  const [creating, setCreating] = useState(false);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -43,9 +45,15 @@ const App = () => {
         <header className="header-container">
           <p className="header"> Tech Titans Book Mart</p>
           <p className="sub-text">Books for every reader, every mood, every moment.</p>
+          {isOwner && (
+            <button className="create-product-button" onClick={() => setCreating(!creating)}>
+              {creating ? "Close" : "Create Product"}
+            </button>
+          )}
         </header>
 
         <main>
+        {creating && <CreateProduct />}
           {publicKey ? renderItemBuyContainer() : renderNotConnectedContainer()}
         </main>
 
