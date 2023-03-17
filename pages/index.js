@@ -44,7 +44,7 @@ const App = () => {
     <div className="App">
       <div className="container">
         <header className="header-container">
-          <p className="header"> Tech Titans Book Mart</p>
+          <p className="header"> Tech Titans Book Mart 📚</p>
           <p className="sub-text">Books for every reader, every mood, every moment.</p>
           {isOwner && (
             <button className="create-product-button" onClick={() => setCreating(!creating)}>

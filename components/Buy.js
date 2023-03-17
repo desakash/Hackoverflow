@@ -119,7 +119,10 @@ export default function Buy({ itemID }) {
   }
 
   if (loading) {
-    return <InfinitySpin color="gray" />;
+    return <InfinitySpin
+      width='100'
+      color="blue"
+    />;
   }
 
   return (
