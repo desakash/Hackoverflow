@@ -4,6 +4,7 @@ import Product from "../components/Product";
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import CreateProduct from "../components/CreateProduct";
+import Head from 'next/head';
 
 // Constants
 // const TWITTER_HANDLE = '_buildspace';
@@ -42,6 +43,12 @@ const App = () => {
 
   return (
     <div className="App">
+      <Head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        <title>Tech Titans Book Mart</title>
+      </Head>
       <div className="container">
         <header className="header-container">
           <p className="header"> Tech Titans Book Mart 📚</p>

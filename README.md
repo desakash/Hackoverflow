@@ -2,6 +2,8 @@
 
 Tech Titans Book Store is an e-commerce web application built using IPFS to store the files and Solana Pay for the payments. The payments are made in USDC, a stable coin. The application provides a user-friendly interface for purchasing and downloading books.
 
+![Tech Titans Book Store](https://techtitans.tiluckdave.in/banner.jpeg)
+
 ## Technologies Used
 
 - IPFS
