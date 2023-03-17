@@ -4,8 +4,8 @@ import { createTransferCheckedInstruction, getAssociatedTokenAddress, getMint } 
 import BigNumber from "bignumber.js";
 import products from "./products.json";
 
-const usdcAddress = new PublicKey("Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr");
-const sellerAddress = "B1aLAAe4vW8nSQCetXnYqJfRxzTjnbooczwkUJAr7yMS";
+const usdcAddress = new PublicKey("4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU");
+const sellerAddress = "372j4WLcBkU5hm7vJ5J2eprEqyrBEeyaTLokdZSPHLkF";
 const sellerPublicKey = new PublicKey(sellerAddress);
 
 const createTransaction = async (req, res) => {
@@ -41,22 +41,22 @@ const createTransaction = async (req, res) => {
     const buyerUsdcAddress = await getAssociatedTokenAddress(usdcAddress, buyerPublicKey);
     const shopUsdcAddress = await getAssociatedTokenAddress(usdcAddress, sellerPublicKey);
     const { blockhash } = await connection.getLatestBlockhash("finalized");
-    
+
     // This is new, we're getting the mint address of the token we want to transfer
     const usdcMint = await getMint(connection, usdcAddress);
-    
+
     const tx = new Transaction({
       recentBlockhash: blockhash,
       feePayer: buyerPublicKey,
     });
-    
+
     // Here we're creating a different type of transfer instruction
     const transferInstruction = createTransferCheckedInstruction(
-      buyerUsdcAddress, 
+      buyerUsdcAddress,
       usdcAddress,     // This is the address of the token we want to transfer
-      shopUsdcAddress, 
-      buyerPublicKey, 
-      bigAmount.toNumber() * 10 ** (await usdcMint).decimals, 
+      shopUsdcAddress,
+      buyerPublicKey,
+      bigAmount.toNumber() * 10 ** (await usdcMint).decimals,
       usdcMint.decimals // The token could have any number of decimals
     );
 
