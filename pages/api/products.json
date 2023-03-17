@@ -1,11 +1,11 @@
 [
-    {
-      "id": 1,
-      "name": "react resources",
-      "price": "0.09",
-      "description": "Get the React Resources for only $0.09!",
-      "image_url": "https://i.imgur.com/rVD8bjt.png",
-      "filename": "REACT_RESOURCES.pdf",
-      "hash": "QmTVDbS3miQK4S7ByUVzgBbzxTRdhpswzifDNaH2U8zTcf"
-    }
-  ]
+  {
+    "id": 1,
+    "name": "Nvidia Jetson Platform",
+    "price": "0.05",
+    "image_url": "https://www.nvidia.com/content/dam/en-zz/Solutions/gtcf22/embedded-systems/jetson-orin-nx-2c50-p.png",
+    "description": "Nvidia Jetson Platform reference pdf file which will help you understand the product better\n",
+    "filename": "nvidia-jetson-platform.pdf",
+    "hash": "QmNphsfbvJXYmXjQJc7DGVwh9WLnDSrzxy7VLcMFVQMBKd"
+  }
+]

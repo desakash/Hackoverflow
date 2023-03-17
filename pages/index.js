@@ -3,6 +3,7 @@ import Product from "../components/Product";
 
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import CreateProduct from "../components/CreateProduct";
 
 // Constants
 // const TWITTER_HANDLE = '_buildspace';
@@ -10,9 +11,9 @@ import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 
 const App = () => {
   const { publicKey } = useWallet();
-  const isOwner = ( publicKey ? publicKey.toString() === process.env.NEXT_PUBLIC_OWNER_PUBLIC_KEY : false );
-  const [creating, setCreating] = useState(false);
-  const [products, setProducts] = useState([]);
+  const isOwner = (publicKey ? publicKey.toString() === process.env.NEXT_PUBLIC_OWNER_PUBLIC_KEY : false);
+  const [ creating, setCreating ] = useState(false);
+  const [ products, setProducts ] = useState([]);
 
   useEffect(() => {
     if (publicKey) {
@@ -23,14 +24,14 @@ const App = () => {
           console.log("Products", data);
         });
     }
-  }, [publicKey]);
+  }, [ publicKey ]);
 
   const renderNotConnectedContainer = () => (
     <div className="button-container">
       <WalletMultiButton className="cta-button connect-wallet-button" />
     </div>
   );
-  
+
   const renderItemBuyContainer = () => (
     <div className="products-container">
       {products.map((product) => (
@@ -53,7 +54,7 @@ const App = () => {
         </header>
 
         <main>
-        {creating && <CreateProduct />}
+          {creating && <CreateProduct />}
           {publicKey ? renderItemBuyContainer() : renderNotConnectedContainer()}
         </main>
 

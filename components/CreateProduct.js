@@ -2,26 +2,39 @@ import React, { useState } from "react";
 import { create } from "ipfs-http-client";
 import styles from "../styles/CreateProduct.module.css";
 
-const client = create("https://ipfs.infura.io:5001/api/v0");
+const projectID = process.env.NEXT_PUBLIC_IPFS_PROJECT_ID;
+const projectSecret = process.env.NEXT_PUBLIC_IPFS_API_SECRET_KEY;
+
+const auth = 'Basic ' + Buffer.from(projectID + ':' + projectSecret).toString('base64');
+
+
+const client = create({
+  host: 'ipfs.infura.io',
+  port: 5001,
+  protocol: 'https',
+  headers: {
+    authorization: auth,
+  },
+});
 
 const CreateProduct = () => {
 
-  const [newProduct, setNewProduct] = useState({
+  const [ newProduct, setNewProduct ] = useState({
     name: "",
     price: "",
     image_url: "",
     description: "",
   });
-  const [file, setFile] = useState({});
-  const [uploading, setUploading] = useState(false);
+  const [ file, setFile ] = useState({});
+  const [ uploading, setUploading ] = useState(false);
 
   async function onChange(e) {
     setUploading(true);
     const files = e.target.files;
     try {
-      console.log(files[0]);
-      const added = await client.add(files[0]);
-      setFile({ filename: files[0].name, hash: added.path });
+      console.log(files[ 0 ]);
+      const added = await client.add(files[ 0 ]);
+      setFile({ filename: files[ 0 ].name, hash: added.path });
     } catch (error) {
       console.log("Error uploading file: ", error);
     }
@@ -32,7 +45,7 @@ const CreateProduct = () => {
     try {
       // Combine product data and file.name
       const product = { ...newProduct, ...file };
-      console.log("Sending product to api",product);
+      console.log("Sending product to api", product);
       const response = await fetch("../api/addProduct", {
         method: "POST",
         headers: {
@@ -42,10 +55,10 @@ const CreateProduct = () => {
       });
       const data = await response.json();
       if (response.status === 200) {
-        alert("Product added!");
+        alert("Book added!");
       }
-      else{
-        alert("Unable to add product: ", data.error);
+      else {
+        alert("Unable to add book: ", data.error);
       }
 
     } catch (error) {
@@ -65,8 +78,8 @@ const CreateProduct = () => {
             <input
               type="file"
               className={styles.input}
-              accept=".zip,.rar,.7zip"
-              placeholder="Emojis"
+              accept=".pdf"
+              placeholder="Upload Book PDF"
               onChange={onChange}
             />
             {file.name != null && <p className="file-name">{file.filename}</p>}
@@ -74,7 +87,7 @@ const CreateProduct = () => {
               <input
                 className={styles.input}
                 type="text"
-                placeholder="Product Name"
+                placeholder="Book Name"
                 onChange={(e) => {
                   setNewProduct({ ...newProduct, name: e.target.value });
                 }}
@@ -88,17 +101,17 @@ const CreateProduct = () => {
                 }}
               />
             </div>
-            
+
             <div className={styles.flex_row}>
               <input
                 className={styles.input}
                 type="url"
-                placeholder="Image URL ex: https://i.imgur.com/rVD8bjt.png"
+                placeholder="Thumbnail URL ex: https://i.imgur.com/rVD8bjt.png"
                 onChange={(e) => {
                   setNewProduct({ ...newProduct, image_url: e.target.value });
                 }}
               />
-            </div>      
+            </div>
             <textarea
               className={styles.text_area}
               placeholder="Description here..."
@@ -114,7 +127,7 @@ const CreateProduct = () => {
               }}
               disabled={uploading}
             >
-              Create Product
+              Add Book
             </button>
           </div>
         </div>
